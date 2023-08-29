@@ -12,6 +12,7 @@ const challengesRouter = require('./routes/challenges');
 const workoutsRouter = require('./routes/workouts');
 const weightEntryRouter = require('./routes/weightEntry');
 const firebaseRouter = require('./routes/firebase');
+const invitationsRouter = require('./routes/invitations');
 
 const app = express();
 
@@ -38,5 +39,6 @@ app.use('/challenges', challengesRouter);
 app.use('/workouts', workoutsRouter);
 app.use('/weightEntry', weightEntryRouter);
 app.use('/firebase', firebaseRouter);
+app.use('/invitations', invitationsRouter);
 
 module.exports = app;

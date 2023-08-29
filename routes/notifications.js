@@ -31,6 +31,7 @@ router.post(
   validateAccessToken,
   attachUserToRequest,
   async (req, res, next) => {
+    const { dbUser } = req.user;
     const { notificationId } = req.body;
 
     try {

@@ -14,7 +14,9 @@ router.get(
     const { dbUser } = req.user;
 
     try {
-      const invitations = await Invitation.find({ userId: dbUser._id });
+      const invitations = await Invitation.find({
+        userId: dbUser._id,
+      }).populate();
 
       res.status(200).json(invitations);
     } catch (error) {

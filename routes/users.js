@@ -71,8 +71,7 @@ router.post('/login', validateAccessToken, async (req, res, next) => {
 router.post('/search', validateAccessToken, async (req, res, next) => {
   const { nameInput } = req.body;
 
-  if (!nameInput)
-    return res.status(400).json({ message: 'Name input required.' });
+  if (!nameInput) return res.status(200).json([]);
 
   try {
     const usersWithNameInput = await User.find({

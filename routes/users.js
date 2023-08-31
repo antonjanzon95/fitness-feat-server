@@ -68,4 +68,21 @@ router.post('/login', validateAccessToken, async (req, res, next) => {
   }
 });
 
+router.post('/search', validateAccessToken, async (req, res, next) => {
+  const { nameInput } = req.body;
+
+  if (!nameInput)
+    return res.status(400).json({ message: 'Name input required.' });
+
+  try {
+    const usersWithNameInput = await User.find({
+      name: new RegExp(nameInput, 'i'),
+    }).limit(10);
+
+    return res.status(200).json(usersWithNameInput);
+  } catch (error) {
+    return res.status(500).json({ error: error });
+  }
+});
+
 module.exports = router;
